@@ -136,6 +136,9 @@ public class HttpClientWrapper
     {
         foreach (var header in headers ?? this.DefaultHeaders)
         {
+			if (string.IsNullOrEmpty(header.Value)) {
+				continue;
+			}
             request.Headers.Add(header.Key, header.Value);
         }
     }
